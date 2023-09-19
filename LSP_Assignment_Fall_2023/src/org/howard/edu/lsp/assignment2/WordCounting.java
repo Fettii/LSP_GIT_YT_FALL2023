@@ -29,14 +29,17 @@ public class WordCounting {
                 String[] words = line.split(" ");
                 
                 for (String word : words) {
+                	
+                	if(!isNumeric(word) && isShort(word)) {
                     
-                    if (wordCounts.containsKey(word)) {
-                        int count = wordCounts.get(word);
-                        wordCounts.put(word, count + 1);
-                    } else {
-                        
-                        wordCounts.put(word, 1);
-                    }
+	                    if (wordCounts.containsKey(word)) {
+	                        int count = wordCounts.get(word);
+	                        wordCounts.put(word, count + 1);
+	                    } else {
+	                        
+	                        wordCounts.put(word, 1);
+	                    }
+                	}
                 }
                 
                
@@ -51,5 +54,23 @@ public class WordCounting {
             int count = entry.getValue();
             System.out.println(word + ": " + count);
         }
+    }
+    
+    private static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        
+    }
+    private static boolean isShort(String str) {
+    	if(str.length() <= 3) {
+    		return false;
+    	}
+    	else {
+    		return true;
+    	}
     }
 }
