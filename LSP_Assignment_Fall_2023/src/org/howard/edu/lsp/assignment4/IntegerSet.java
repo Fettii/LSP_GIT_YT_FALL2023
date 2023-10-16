@@ -1,60 +1,102 @@
 package org.howard.edu.lsp.assignment4;
-
+/**
+ * @author Yafet Tedla
+ * @version 10/16/2023
+ */
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class IntegerSet {
-	
-// Hint: probably best to use an array list.  You will need to do a little research
-	private List<Integer> set = new ArrayList<Integer>();
+    /**
+     * Holds the elements of the set.
+     */
 
-	// Default Constructor
+	private List<Integer> set = new ArrayList<Integer>();
+	   /**
+     * Default constructor for creating an empty `IntegerSet`.
+     */
 	public IntegerSet() {
 	}
-	
+    /**
+     * Constructor that initializes an `IntegerSet` with an existing list of integers.
+     *
+     * @param set An ArrayList of integers to initialize the `IntegerSet`.
+     */	
 	public IntegerSet(ArrayList<Integer> set) {
 		this.set = set;
 	}
 	
-	// Clears the internal representation of the set
+    /**
+     * Clears the internal representation of the set, making it empty.
+     */
 	public void clear() {
 		set.clear();
 		
 	}
 	
-	// Returns the length of the set
+    /**
+     * Returns the number of elements in the set.
+     *
+     * @return The number of elements in the set.
+     */
 	public int length() {
 		
 		return set.size();
 		
 	}
 	
-	/*
-     * Returns true if the 2 sets are equal, false otherwise;
-* Two sets are equal if they contain all of the same values in ANY order.  This overrides
-* the equal method from the Object class.
-*/
+    /**
+     * Compares this `IntegerSet` with another object for equality.
+     * Two `IntegerSet` objects are equal if they contain the same values in any order.
+     *
+     * @param o The object to compare with this `IntegerSet`.
+     * @return `true` if the objects are equal, `false` otherwise.
+     */
+	public boolean equalsto(Object o) {
+		if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
-	
-	public boolean equals(Object o) {
-		Collections.sort(set);
-		
-		if(set == o) {
-			return true;
-		
-		}
-		return false;
+        IntegerSet that = (IntegerSet) o;
+
+        if (set == null && that.set == null) {
+            return true;
+        }
+        if (set == null || that.set == null || set.size() != that.set.size()) {
+            return false;
+        }
+
+        List<Integer> setCopy = new ArrayList<>(set);
+        List<Integer> oCopy = new ArrayList<>(that.set);
+
+        Collections.sort(setCopy);
+        Collections.sort(oCopy);
+
+        return setCopy.equals(oCopy);
 		
 	}
 	
-	// Returns true if the set contains the value, otherwise false
+    /**
+     * Checks if the set contains a specific value.
+     *
+     * @param value The value to check for in the set.
+     * @return `true` if the set contains the value, `false` otherwise.
+     */
 	public boolean contains(int value) {
 		return this.contains(value);
 	}
 	
-	// Returns the largest item in the set; Throws a IntegerSetException if the set is empty 
+    /**
+     * Returns the largest item in the set.
+     *
+     * @return The largest item in the set.
+     * @throws IllegalArgumentException If the set is empty.
+     */
 	public int largest(){
 		if(set.isEmpty()) {
 			throw new IllegalArgumentException("Set is empty");
@@ -64,7 +106,12 @@ public class IntegerSet {
 		return biggest;
 	}
 	
-	// Returns the smallest item in the set; Throws a IntegerSetException if the set is empty
+    /**
+     * Returns the smallest item in the set.
+     *
+     * @return The smallest item in the set.
+     * @throws IllegalArgumentException If the set is empty.
+     */
 	public int smallest() {
 		if(set.isEmpty()) {
 			throw new IllegalArgumentException("Set is empty");
@@ -77,7 +124,11 @@ public class IntegerSet {
 		
 	}
 	
-	// Adds an item to the set or does nothing it already there	
+    /**
+     * Adds an item to the set if it is not already present.
+     *
+     * @param item The item to add to the set.
+     */
 	public void add(int item) {
 		if(!set.contains(item)) {
 			set.add(item);
@@ -85,7 +136,10 @@ public class IntegerSet {
 		
 	}
 	
-	// Removes an item from the set or does nothing if not there
+	/**
+	 *  Removes an item from the set or does nothing if not there
+	 * @param item
+	 */
 	public void remove(int item) {
 		if(!set.contains(item)) {
 			set.remove(item);
@@ -93,7 +147,10 @@ public class IntegerSet {
 
 	}
 	
-	// Set union
+	/**
+	 *  Set union
+	 * @param intSetb
+	 */
 	public void union(IntegerSet intSetb) {
 		for(Integer item : intSetb.set) {
 			if(!set.contains(item)) {
@@ -102,7 +159,10 @@ public class IntegerSet {
 		}
 	}
 	
-	// Set intersection, all elements in s1 and s2
+	/**
+	 *  Set intersection, all elements in s1 and s2
+	 * @param intSetb
+	 */
 	public void intersect(IntegerSet intSetb) {
 		List<Integer> intersection = new ArrayList<Integer>();
 		
@@ -114,7 +174,10 @@ public class IntegerSet {
 		set = intersection;
 	}
 	
-	// Set difference, i.e., s1 –s2
+	/**
+	 *  Set difference, i.e., s1 –s2
+	 * @param intSetb
+	 */
 	public void diff(IntegerSet intSetb) {
 		
 		List<Integer> difference = new ArrayList<Integer>();
@@ -128,7 +191,10 @@ public class IntegerSet {
 		
 	}; 
 	
-	// Set complement, all elements not in s1
+	/**
+	 *  Set complement, all elements not in s1
+	 * @param intSetb
+	 */
 	public void complement(IntegerSet intSetb) {
 		
 		List<Integer> complement = new ArrayList<Integer>();
@@ -142,12 +208,19 @@ public class IntegerSet {
         set = complement;
 	};
 	
-	// Returns true if the set is empty, false otherwise
+	/**
+	 *  Returns true if the set is empty, false otherwise
+	 * @return
+	 */
 	boolean isEmpty() {
 		return set.isEmpty();
 	}; 
 	
-	// Return String representation of your set
+    /**
+     * Returns a string representation of the set.
+     *
+     * @return A string representation of the set.
+     */
 	public String toString() {
 		return set.toString();
 	};

@@ -1,7 +1,16 @@
 package org.howard.edu.lsp.assignment4;
-
+/**
+ * The `Driver` class is used to test the functionality of the `IntegerSet` class.
+ *
+ * @author Yafet Tedla
+ * @version 10/16/2023
+ */
 public class Driver { 
-	
+    /**
+     * The main method for testing the `IntegerSet` class.
+     *
+     * @param args The command-line arguments (not used in this context).
+     */	
 	public static void main(String[] args) {
 	
 		IntegerSet set1 = new IntegerSet();
@@ -14,9 +23,9 @@ public class Driver {
         System.out.println("Largest value in Set1 is: " + set1.largest());
 
         IntegerSet set2 = new IntegerSet();
-        set2.add(4);
+        set2.add(3);
+        set2.add(2);
         set2.add(5);
-
         System.out.println("Union of Set1 and Set2");
         System.out.println("Value of Set1 is: " + set1.toString());
         System.out.println("Value of Set2 is: " + set2.toString());
@@ -24,7 +33,7 @@ public class Driver {
         System.out.println("Result of union of Set1 and Set2");
         System.out.println(set1.toString()); // result of union of set1 and set2
 
-
+        System.out.println("Test 1 equals func " + set1.equalsto(set2));
 }
 	
 }
