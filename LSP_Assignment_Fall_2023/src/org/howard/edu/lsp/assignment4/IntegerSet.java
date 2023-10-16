@@ -87,8 +87,8 @@ public class IntegerSet {
      * @param value The value to check for in the set.
      * @return `true` if the set contains the value, `false` otherwise.
      */
-	public boolean contains(int value) {
-		return this.contains(value);
+	public boolean thiscontains(int value) {
+		return set.contains(value);
 	}
 	
     /**
