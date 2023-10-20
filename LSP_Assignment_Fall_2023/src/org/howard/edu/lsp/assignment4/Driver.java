@@ -46,6 +46,7 @@ public class Driver {
         IntegerSet set6 = new IntegerSet();
         set6.add(30);
         set6.add(15);
+        set6.add(5);
         System.out.println("Largest value in Set6: " + set6.largest());
         System.out.println("Smallest value in Set6: " + set6.smallest());
 
@@ -88,6 +89,18 @@ public class Driver {
         set14.add(3);
         set13.complement(set14);
         System.out.println("Complement of Set13 with respect to Set14: " + set13.toString());
+        
+     // Test the isEmpty() method
+        IntegerSet set15 = new IntegerSet();
+        set15.add(0);
+        System.out.println("Set15 is empty: " + set15.isEmpty());
+
+        // Test the toString() method
+        IntegerSet set16 = new IntegerSet();
+        set16.add(1);
+        set16.add(2);
+        set16.add(3);
+        System.out.println("String representation of Set16: " + set16.toString());
 }
 	
 }
