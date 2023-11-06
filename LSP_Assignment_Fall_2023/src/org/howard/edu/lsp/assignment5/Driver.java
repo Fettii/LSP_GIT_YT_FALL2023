@@ -1,4 +1,4 @@
-package org.howard.edu.assignment5;
+package org.howard.edu.lsp.assignment5;
 /**
  * The `Driver` class is used to test the functionality of the `IntegerSet` class.
  *

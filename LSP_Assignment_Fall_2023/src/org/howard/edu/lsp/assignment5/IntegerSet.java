@@ -1,4 +1,4 @@
-package org.howard.edu.assignment5;
+package org.howard.edu.lsp.assignment5;
 /**
  * @author Yafet Tedla
  * @version 10/16/2023
